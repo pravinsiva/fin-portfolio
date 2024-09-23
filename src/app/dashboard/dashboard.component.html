@@ -1,0 +1,40 @@
+<div fxLayout="column" fxLayoutAlign="start center">
+  <mat-toolbar color="primary">
+    <span>Portfolio Dashboard</span>
+  </mat-toolbar>
+
+  <div fxLayout="row" fxLayoutGap="10px" fxLayoutWrap>
+    <mat-card fxFlex="45" fxFlex.xs="100">
+      <mat-card-title>Asset Allocation</mat-card-title>
+      <ngx-charts-pie-chart
+        [view]="[400, 300]"
+        [results]="assetAllocationData"
+        [legend]="true"
+        [labels]="true"
+      >
+      </ngx-charts-pie-chart>
+    </mat-card>
+
+    <mat-card fxFlex="45" fxFlex.xs="100">
+      <mat-card-title>Market Trends</mat-card-title>
+      <ngx-charts-line-chart
+        [view]="[400, 300]"
+        [scheme]="colorScheme"
+        [results]="marketTrendsData"
+        [legend]="true"
+        [xAxis]="true"
+        [yAxis]="true"
+        [autoScale]="true"
+      >
+      </ngx-charts-line-chart>
+    </mat-card>
+
+    <mat-card fxFlex="45" fxFlex.xs="100">
+      <mat-card-title>Performance Metrics</mat-card-title>
+      <div>
+        <h3>Total Value: {{ totalValue | currency }}</h3>
+        <h3>Returns: {{ totalReturns }}%</h3>
+      </div>
+    </mat-card>
+  </div>
+</div>
