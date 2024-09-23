@@ -1,9 +1,19 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { InvestmentFormComponent } from './investment-form/investment-form.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'add-investment', component: InvestmentFormComponent },
+  {
+    path: 'dashboard',
+    loadComponent: () =>
+      import('./dashboard/dashboard.component').then(
+        (c) => c.DashboardComponent
+      ),
+  },
+  {
+    path: 'add-investment',
+    loadComponent: () =>
+      import('./investment-form/investment-form.component').then(
+        (c) => c.InvestmentFormComponent
+      ),
+  },
 ];
